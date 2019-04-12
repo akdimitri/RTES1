@@ -3,8 +3,8 @@
 * Author: Dimitrios Antoniadis            *
 * email: akdimitri@auth.gr                *
 *******************************************
-*Aristotle University(AUTH)*
-*8th Semester*
+*Aristotle University(AUTH) *
+*8th Semester *
 
 
 **Real Time Embedded Systems(RTES): Project 1**
