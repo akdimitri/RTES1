@@ -14,5 +14,7 @@ Aristotle University(AUTH)
 Time intervals sampling using sleep() function periodically 
 
 Repository's Contents
+
 1.source code/naive.c : raw time sampling(inaccurate)
+
 2.source code/brute.c : accurate time sampling using delays between timestamps
