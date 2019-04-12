@@ -3,8 +3,9 @@
 * Author: Dimitrios Antoniadis            *
 * email: akdimitri@auth.gr                *
 *******************************************
-*Aristotle University(AUTH)*
-*8th Semester*
+*Aristotle University(AUTH)
+*8th Semester
+/n
 **Real Time Embedded Systems(RTES): Project 1**
 
 Time intervals sampling using sleep() function periodically 
