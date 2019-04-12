@@ -31,15 +31,17 @@ int main(int argc, char const *argv[]) {
   unsigned long int uIntervalTime = (unsigned long int)(intervalTime*1000000);      //1 sec = 1000000 usecs
   int i;
 
-  printf("Interval time in microsecs: %ld\n", uIntervalTime);
-
+  //printf("Interval time in microsecs: %ld\n", uIntervalTime);
+  unsigned long int delay = 0;
   gettimeofday(&start, NULL);
   timeStamps[0] = (start.tv_sec * 1000000 + start.tv_usec);
   for( i = 1; i < iterations; i++){
+
     //printf("i: %d   ",i );
-    usleep( uIntervalTime);
+    usleep( uIntervalTime - delay);
     gettimeofday(&end, NULL);
     timeStamps[i] = (end.tv_sec * 1000000 + end.tv_usec) ;
+    delay = timeStamps[i] - timeStamps[i-1] + uIntervalTime;
     //printf("%Lf \n", timeStamps[i-1]);
   }
 
@@ -47,7 +49,7 @@ int main(int argc, char const *argv[]) {
   /* Write Results to a text file */
   FILE *fp;
 
-  fp = fopen("./testResults", "w");
+  fp = fopen("./testResultsBrute", "w");
   for( i = 0; i < iterations; i++){
     fprintf(fp, "%Lf\n", timeStamps[i]);
   }
