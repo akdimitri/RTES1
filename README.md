@@ -4,8 +4,9 @@
 * email: akdimitri@auth.gr                *
 *******************************************
 *Aristotle University(AUTH)
-*8th Semester
-/n
+*8th Semester 
+
+
 **Real Time Embedded Systems(RTES): Project 1**
 
 Time intervals sampling using sleep() function periodically 
