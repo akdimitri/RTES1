@@ -3,9 +3,9 @@
 * Author: Dimitrios Antoniadis            
 * email: akdimitri@auth.gr                
 *******************************************
-*Aristotle University(AUTH) 
+Aristotle University(AUTH) 
 *******************************************
-*8th Semester *
+8th Semester 
 *******************************************
 
 
