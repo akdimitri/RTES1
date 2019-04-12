@@ -22,7 +22,7 @@ int main(int argc, char const *argv[]) {
   printf("Execution Time: %lf secs\nInterval Time: %lf secs\nLoop Iterations: %d\n", executionTime*3600, intervalTime, iterations);
 
   /* timeStamps table */
-  long double *timeStamps = ( long double*)malloc( (iterations-1)*sizeof( long double));
+  long double *timeStamps = ( long double*)malloc( iterations*sizeof( long double));
 
   /* Variables to hold timestamps */
   struct timeval start, end, startProgram, endProgram;
@@ -33,12 +33,13 @@ int main(int argc, char const *argv[]) {
 
   printf("Interval time in microsecs: %d\n", uIntervalTime);
   gettimeofday(&startProgram, NULL);
-  for( i = 1; iterations; i++){
+  for( i = 1; i <= iterations; i++){
     gettimeofday(&start, NULL);
+    //printf("i: %d   ",i );
     usleep( uIntervalTime);
     gettimeofday(&end, NULL);
     timeStamps[i-1] = (end.tv_sec * 1000000 + end.tv_usec) - (start.tv_sec * 1000000 + start.tv_usec);
-
+    //printf("%Lf \n", timeStamps[i-1]);
   }
   gettimeofday(&endProgram, NULL);
 
@@ -47,7 +48,7 @@ int main(int argc, char const *argv[]) {
   FILE *fp;
 
   fp = fopen("./testResults", "w");
-  for( i = 0; iterations - 1; i++){
+  for( i = 0; i < iterations; i++){
     fprintf(fp, "%Lf\n", timeStamps[i]);
   }
 
