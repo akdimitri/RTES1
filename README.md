@@ -1,4 +1,4 @@
-# RTES1
+# RTES: Project 1
 *******************************************
 * Author: Dimitrios Antoniadis            
 * email: akdimitri@auth.gr                
