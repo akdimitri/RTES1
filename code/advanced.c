@@ -14,36 +14,36 @@ int main(int argc, char const *argv[]) {
    * in Hours. Interval time between each sample in
    * seconds.
    */
-  int i;
-  double executionTime = atof(argv[1]);
-  double intervalTime = atof(argv[2]);
-  int iterations = (int)(executionTime*3600/intervalTime) + 1;
+  int i, iterations, uIntervalTime, delay;
+  double executionTime, intervalTime;
+  long long int *timeStamps = ( long long int*)malloc( ((unsigned int) iterations)*sizeof( long long int));
   struct timeval sample;
-  long int *timeStamps = ( long int*)malloc( ((unsigned int) iterations)*sizeof( long int));
-  unsigned int uIntervalTime = (unsigned int)(intervalTime*1000000);      //1 sec = 1000000 usecs
-  int delay = 0;
-  
+
+  executionTime = atof(argv[1]);
+  intervalTime = atof(argv[2]);
+  iterations = (int)(executionTime*3600/intervalTime) + 1;
+  uIntervalTime = (int)(intervalTime*1000000);      //1 sec = 1000000 usecs
+
   printf("Execution Time: %.2lf HOURS or %.2lf MINUTES\n", executionTime, executionTime*60);
   printf("Interval Time: %.2lf SECONDS\n", intervalTime);
-  printf("Interval Time: %u MICRO SECONDS\n", uIntervalTime);
-
+  printf("Interval Time: %d MICRO SECONDS\n", uIntervalTime);
+  printf("Iterations: %d\n", iterations);
 
   printf("Time Sampling:... \n");
+
   /* 1st Time Stamp */
   gettimeofday(&sample, NULL);
-  timeStamps[0] = sample.tv_sec * 1000000 + sample.tv_usec;
-  usleep( uIntervalTime);
-  
+  timeStamps[0] = (sample.tv_sec * 1000000) + sample.tv_usec;
+  usleep( (unsigned int)uIntervalTime);
+
   /* 2nd to Nth Time Stamps */
-  for( i = 1; i < (iterations - 1); i++){
+  for( i = 1; i <= (iterations - 2); i++){
     gettimeofday(&sample, NULL);
-    timeStamps[i] = sample.tv_sec * 1000000 + sample.tv_usec;
-    delay = timeStamps[i] - (i*uIntervalTime + timeStamps[0]);
-    if(delay > uIntervalTime){
-      printf("Negative Argument in USLEEP\n");
-     return 3;
-    }
-    usleep( uIntervalTime - delay);    
+    timeStamps[i] = (sample.tv_sec * 1000000) + sample.tv_usec;
+    delay = (int)(timeStamps[i] - (i*uIntervalTime + timeStamps[0]));
+    printf("TIMESATMP: %Ld usecs \t DELAY = %d\n", timeStamps[i], delay);
+    //if(delay < uIntervalTime)
+    usleep( (unsigned int)(uIntervalTime - delay));
   }
 
   /* Nth + 1 Time Stamp */
@@ -53,9 +53,10 @@ int main(int argc, char const *argv[]) {
   printf("Time Sampling: DONE\n");
 
   /* Write Results to a text file */
-  FILE *fp = fopen("./WithTimestampsCheck/testResults.txt", "w");
+  FILE *fp;
+  fp =  fopen("./testResults.txt", "w");
   for( i = 0; i < iterations; i++){
-    fprintf(fp, "%lu\n", timeStamps[i]);
+    fprintf(fp, "%Ld\n", timeStamps[i]);
   }
   fclose(fp);
 
