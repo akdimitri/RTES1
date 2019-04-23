@@ -15,6 +15,6 @@ Time intervals sampling using sleep() function periodically
 
 Repository's Contents
 
-1. source code/naive.c : raw time sampling(inaccurate)
+1. ./code/simple.c : time sampling(inaccurate)
 
-2. source code/brute.c : accurate time sampling using delays between timestamps
+2. ./code/advanced.c : accurate time sampling using delays between timestamps
