@@ -1,3 +1,13 @@
+/*******************************************
+* Dimitrios Antoniadis                     *
+* akdimitri@auth.gr                        *
+* Aristotle University of Thessaloniki     *
+* May 2019                                 *
+* REAL TIME EMBEDED SYSTEMS                *
+* 8th Semester                             *
+*******************************************/  
+
+
 #include <stdio.h>
 #include <sys/time.h>
 #include <stdlib.h>
