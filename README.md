@@ -3,7 +3,7 @@
 * Author: Dimitrios Antoniadis            
 * email: akdimitri@auth.gr                
 *******************************************
-Aristotle University(AUTH) 
+Aristotle University of Thessaloniki(AUTH) 
 *******************************************
 8th Semester 
 *******************************************
